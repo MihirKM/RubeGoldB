@@ -9,6 +9,9 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    // Class variable area
+    [Tooltip("Drag object to follow here.")]
+    public GameObject Target;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,12 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Check target is set
+        if(Target != null)
+        {
+            Vector3 newPos = Target.transform.position;
+            newPos.z = transform.position.z;
+            transform.position = newPos;
+        }
     }
 }
